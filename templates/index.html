@@ -40,17 +40,19 @@
         </div>
         <div class='col-md-4'> 
           <h4>Mars Facts</h4>
-          <p>{{ mars.html_table }}</p>
+          <iframe src="{{ mars.html_table }}"></iframe>
         </div>
     </div>
-    <div class="row" id="mars-hemisphers">
+    <div class="row" id="mars-hemispheres">
         <div class="col-md-12">
-          <h3>Mars Hemisphers</h3>
+          <h3>Mars Hemispheres</h3>
           <hr>
           <div class="card" style="width: 20rem;">
-            <img class="card-img-top" src="{{ mars.img_url }}" alt="Hemisphere Image">
-            <div class="card-body">
+            {% for hemi in hemis %}
+              <img class="card-img-top" src="{{ mars.img_url }}" alt="Hemisphere Image">
+              <div class="card-body">
               <h5 class="card-title">{{ mars.title }}</h5>
+            {% endfor %}
             </div>
           </div>
         </div>
