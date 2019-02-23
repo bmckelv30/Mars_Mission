@@ -72,7 +72,8 @@ def scrape():
     # Use Pandas to convert the data to a HTML table string.
     tables = pd.read_html(url_f)
     df = tables[0]
-    html_table = df.to_html("table.html")
+    html_table = df.to_html()
+    df.to_html('table.html')
     
     ### Mars Hemispheres
     # Visit the USGS Astrogeology site [here](https://astrogeology.usgs.gov/search/results?q=hemisphere+enhanced&k1=target&v1=Mars) 

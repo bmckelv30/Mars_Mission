@@ -24,6 +24,7 @@
     </div>
     <div class="row" id="mars-news-weather">
         <div class="col-md-8">
+          <h2>Featured Image</h2>
           <img src="{{ mars.featured_image_url }}" alt="JPL Featured Image" width="600rem">
         </div>
         <div class='col-md-4'> 
@@ -40,7 +41,7 @@
         </div>
         <div class='col-md-4'> 
           <h4>Mars Facts</h4>
-          <iframe src="{{ mars.html_table }}"></iframe>
+          <table> {{ mars.html_table | safe }} </table>
         </div>
     </div>
     <div class="row" id="mars-hemispheres">
