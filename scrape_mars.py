@@ -51,7 +51,7 @@ def scrape():
     html = browser.html
     image_soup = BeautifulSoup(html, 'html.parser')
     relative_image_path = image_soup.find('img', class_="main_image")['src']
-    featured_image_url = url_s + relative_image_path
+    featured_image_url = "https://www.jpl.nasa.gov" + relative_image_path
 
     ### Mars Weather
     # Visit the Mars Weather twitter account [here](https://twitter.com/marswxreport?lang=en)
@@ -105,28 +105,28 @@ def scrape():
         image_soup = BeautifulSoup(html, 'html.parser')
         
         relative_image_path = image_soup.find_all('a')[41]["href"]
-        img_url = url_h + relative_image_path
+        img_url = relative_image_path
         img_urls.append(img_url)
         
         browser.click_link_by_partial_text('Back')
         time.sleep(5)
         counter = counter + 1
 
-        # Store data in a dictionary
-        mars_data = {
-            "news_title": news_title,
-            "news_p": news_p,
-            "featured_image_url": featured_image_url,
-            "mars_weather": mars_weather,
-            "html_table": html_table,
-            "hemisphere_image_urls": {
-                "title": title,
-                "img_url": img_url
-                }
+    # Store data in a dictionary
+    mars_data = {
+        "news_title": news_title,
+        "news_p": news_p,
+        "featured_image_url": featured_image_url,
+        "mars_weather": mars_weather,
+        "html_table": html_table,
+        "hemisphere_image_urls": {
+            "title": titles,
+            "img_url": img_urls
             }
+        }
         
-        # Close the browser after scraping
-        browser.quit()
-        
-        # Return results
-        return mars_data
+    # Close the browser after scraping
+    browser.quit()
+    
+    # Return results
+    return mars_data
